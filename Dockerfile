@@ -17,11 +17,9 @@ RUN apk --no-cache add \
     wget
 
 # download and set up vault
-# https://releases.hashicorp.com/vault/1.16.2/vault_1.16.2_linux_amd64.zip
-#COPY ./vault.zip /tmp/vault.zip
 RUN wget --output-document=/tmp/vault.zip \
     https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
-#RUN unzip /tmp/vault.zip -d /vault && \
+    unzip /tmp/vault.zip -d /vault && \
     rm -f /tmp/vault.zip && \
     chmod +x /vault
 
