@@ -2,7 +2,7 @@
 FROM alpine:3.19
 
 # set vault version
-ENV VAULT_VERSION 1.16.2
+ENV VAULT_VERSION=1.16.2
 
 # create a new directory
 RUN mkdir -p /vault/config && \
@@ -17,7 +17,8 @@ RUN apk --no-cache add \
     wget
 
 # download and set up vault
-RUN wget --quiet --output-document=/tmp/vault.zip https://releases.hashicorp.com/vault/vault_${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
+#                                                 https://releases.hashicorp.com/vault/1.16.2/vault_1.16.2_linux_amd64.zip
+RUN wget --quiet --output-document=/tmp/vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
     unzip /tmp/vault.zip -d /vault && \
     rm -f /tmp/vault.zip && \
     chmod +x /vault
