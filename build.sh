@@ -1,10 +1,11 @@
 #!/bin/bash
-tag_base="latest"
+
+VAULT_VERSION=1.16.2
 
 # Сборка
 docker buildx build --output type=docker --progress=plain \
-  --build-arg="VAULT_VERSION=1.16.2" \
-  -f Dockerfile -t coralhl/vault:$tag_base -t coralhl/vault:1.16.2 .
+  --build-arg="VAULT_VERSION=$VAULT_VERSION" \
+  -f Dockerfile -t coralhl/vault:latest -t coralhl/vault:$VAULT_VERSION .
 # Заливка в регистр
-docker push coralhl/vault:$tag_base
-docker push coralhl/vault:1.16.2
+docker push coralhl/vault:latest
+docker push coralhl/vault:$VAULT_VERSION
